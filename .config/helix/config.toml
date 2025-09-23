@@ -1,0 +1,93 @@
+theme = "ferra_modified"
+
+[editor]
+rulers = [64]
+auto-format = false
+line-number = "relative"
+bufferline = "always"
+cursorline = true
+color-modes = true
+auto-completion = false
+completion-trigger-len = 0
+undercurl = true
+text-width = 64
+
+[editor.soft-wrap]
+enable = false
+wrap-at-text-width = true
+wrap-indicator = ""
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.search]
+smart-case = true
+wrap-around = true
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+newline = "none"
+
+[editor.indent-guides]
+render = true
+
+[editor.file-picker]
+hidden = false
+ignore = false
+git-ignore = false
+
+[keys.normal]
+y = "yank_to_clipboard"
+P = "paste_clipboard_before"
+p = "paste_clipboard_after"
+C-h = ":buffer-previous"
+C-l = ":buffer-next"
+X =  "select_line_above"
+G = "goto_file_end"
+"A-j" = [
+  "extend_to_line_bounds",
+  "delete_selection",
+  "paste_after",
+  "select_mode",
+  "goto_line_start",
+  "normal_mode",
+]
+"A-k" = [
+  "extend_to_line_bounds",
+  "delete_selection",
+  "move_line_up",
+  "paste_before",
+  "flip_selections",
+]
+
+[keys.normal.space.b]
+c = ":buffer-close"
+
+
+[keys.select]
+y = "yank_to_clipboard"
+"A-j" = [
+  "extend_to_line_bounds",
+  "delete_selection",
+  "paste_after",
+  "select_mode",
+  "goto_line_start",
+  "normal_mode",
+]
+"A-k" = [
+  "extend_to_line_bounds",
+  "delete_selection",
+  "move_line_up",
+  "paste_before",
+  "flip_selections",
+]
+
+[keys.insert]
+"C-space" = "completion"
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
+

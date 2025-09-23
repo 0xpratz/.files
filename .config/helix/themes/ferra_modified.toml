@@ -1,0 +1,5 @@
+inherits = "ferra"
+name = "ferra_modified"
+
+"ui.cursor.primary" = { fg = "ferra_night", bg = "ferra_coral" }
+"comment" = { fg = "ferra_mist", modifiers = ["dim"] }

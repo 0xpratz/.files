@@ -1,0 +1,93 @@
+[[language]]
+name = "toml"
+auto-format = true
+formatter = { command = "taplo", args = ["fmt", "-"] }
+
+[[language]]
+name = "markdown"
+auto-format = true
+rulers = [64]
+formatter = { command = "dprint", args = ["fmt", "--stdin", "md"]}
+
+[[language]]
+name = "go"
+auto-format = true
+language-servers = [ "gopls", "golangci-lint-lsp" ]
+# formatter = { command = "bash", args = ["-c", "input=$(cat); echo \"$input\" | goimports 2>/dev/null && echo \"$input\" | goimports | golines -m 64 -t 4 2>/dev/null || echo \"$input\""]}
+formatter = {command = "goimports"}
+[language-server.gopls]
+command = "gopls"
+
+[language-server.gopls.config]
+staticcheck = true
+gofumpt = true
+local = ""
+usePlaceholders = true
+completeUnimported = true
+deepCompletion = true
+matcher = "fuzzy"
+
+[language-server.golangci-lint-lsp]
+command = "golangci-lint-langserver"
+
+[language-server.golangci-lint-lsp.config]
+# command = ["golangci-lint", "run", "--output.json.path", "stdout", "--show-stats=false", "--issues-exit-code=1"]
+command = [
+    "golangci-lint", "run", 
+    "--output.json.path", "stdout", 
+    "--show-stats=false", 
+    "--issues-exit-code=1",
+    # "--enable", "gocyclo,goconst,gocritic,gosimple,govet,ineffassign,misspell,staticcheck,unused,errcheck"
+]
+
+
+[language-server.gopls.config.analyses]
+unusedparams = true
+shadow = true
+# fieldalignment = true
+nilness = true
+printf = true
+httpresponse = true
+testinggoroutine = true
+
+[[language]]
+name = "gomod"
+auto-format = true
+
+[[language]]
+name = "gowork"
+auto-format = true
+
+[[language]]
+name = "gotmpl"
+scope = "source.gotmpl"
+injection-regex = "gotmpl"
+file-types = ["gohtml", "gotmpl", "tmpl" ]
+language-servers = ["gopls",
+	"vscode-html-language-server",
+	"tailwindcss-ls",
+	"emmet-lsp",
+]
+formatter = { command = "djlint", args = ["--reformat", "--format-css", "--format-js", "-"] }
+indent = { tab-width = 4, unit = "    " }
+auto-format = true
+
+[[language]]
+name = "html"
+language-servers = [
+	"vscode-html-language-server",
+	"tailwindcss-ls",
+	"emmet-lsp",
+]
+formatter = { command = "djlint", args = ["--reformat", "--format-css", "--format-js", "-"] }
+indent = { tab-width = 4, unit = "    " }
+auto-format = true
+
+[language-server.tailwindcss-ls]
+command = "tailwindcss-language-server"
+args = ["--stdio"]
+
+[language-server.emmet-lsp]
+command = "emmet-ls"
+args = ["--stdio"]
+
