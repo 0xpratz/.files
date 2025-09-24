@@ -1,0 +1,43 @@
+[[language]]
+name = "go"
+auto-format = true
+language-servers = [ "gopls", "golangci-lint-lsp" ]
+formatter = {command = "goimports"}
+[language-server.gopls]
+command = "gopls"
+
+[language-server.gopls.config]
+staticcheck = true
+gofumpt = true
+local = ""
+usePlaceholders = true
+completeUnimported = true
+deepCompletion = true
+matcher = "fuzzy"
+
+[language-server.golangci-lint-lsp]
+command = "golangci-lint-langserver"
+
+[language-server.golangci-lint-lsp.config]
+command = [
+    "golangci-lint", "run", 
+    "--output.json.path", "stdout", 
+    "--show-stats=false", 
+    "--issues-exit-code=1",
+]
+
+[language-server.gopls.config.analyses]
+unusedparams = true
+shadow = true
+nilness = true
+printf = true
+httpresponse = true
+testinggoroutine = true
+
+[[language]]
+name = "gomod"
+auto-format = true
+
+[[language]]
+name = "gowork"
+auto-format = true
