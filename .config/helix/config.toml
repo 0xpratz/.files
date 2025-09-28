@@ -2,7 +2,7 @@ theme = "ferra_modified"
 
 [editor]
 rulers = [64]
-auto-format = false
+auto-format = true
 line-number = "relative"
 bufferline = "always"
 cursorline = true

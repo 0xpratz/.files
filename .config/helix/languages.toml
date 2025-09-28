@@ -1,14 +1,15 @@
 [[language]]
 name = "go"
 auto-format = true
+formatter = {command = "goimports" }
 language-servers = [ "gopls", "golangci-lint-lsp" ]
-formatter = {command = "goimports"}
+
 [language-server.gopls]
 command = "gopls"
 
 [language-server.gopls.config]
 staticcheck = true
-gofumpt = true
+# gofumpt = true
 local = ""
 usePlaceholders = true
 completeUnimported = true
