@@ -25,7 +25,7 @@ for dir in nvim tmux; do
   if [[ -e "$CONFIG/$dir" || -L "$CONFIG/$dir" ]]; then
     rm -rf "$CONFIG/$dir"
   fi
-  ln -s "$DOTFILES/$dir" "$CONFIG/$dir"
+  ln -s "$DOTFILES/.config/$dir" "$CONFIG/$dir"
 done
 
 # ---- verification --------------------------------------------------
