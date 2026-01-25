@@ -1,11 +1,39 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-ln -sf ~/.files/.zshrc ~/.zshrc
+DOTFILES="$HOME/.files"
+CONFIG="$HOME/.config"
 
-mkdir -p ~/.config
-ln -sf ~/.files/nvim ~/.config/nvim
-ln -sf ~/.files/tmux ~/.config/tmux
+echo "Installing dotfiles from: $DOTFILES"
 
-echo "Dotfiles installed!"
+# ---- sanity checks -------------------------------------------------
 
+if [[ ! -d "$DOTFILES" ]]; then
+  echo "ERROR: $DOTFILES does not exist"
+  exit 1
+fi
 
+# ---- files ---------------------------------------------------------
+
+ln -sf "$DOTFILES/.zshrc" "$HOME/.zshrc"
+
+# ---- directories ---------------------------------------------------
+
+mkdir -p "$CONFIG"
+
+for dir in nvim tmux; do
+  if [[ -e "$CONFIG/$dir" || -L "$CONFIG/$dir" ]]; then
+    rm -rf "$CONFIG/$dir"
+  fi
+  ln -s "$DOTFILES/$dir" "$CONFIG/$dir"
+done
+
+# ---- verification --------------------------------------------------
+
+echo
+echo "Installed symlinks:"
+ls -l "$HOME/.zshrc"
+ls -ld "$CONFIG/nvim" "$CONFIG/tmux"
+
+echo
+echo "Dotfiles installed successfully."
