@@ -1,4 +1,4 @@
-export PATH=$HOME/bin:$HOME/.local/bin:$HOME/.local/share/go/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/nix-profile/bin:$HOME/bin:$HOME/.local/bin:$HOME/.local/share/go/bin:/usr/local/bin:$PATH
 
 export EDITOR=hx
 export VISUAL=hx
